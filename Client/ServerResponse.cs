@@ -10,6 +10,6 @@ namespace Client
     {
         public string response { get; set; }
         public string header { get; set; }
-        public Data data { get; set; }
+        public Data data { get; set; } 
     }
 }

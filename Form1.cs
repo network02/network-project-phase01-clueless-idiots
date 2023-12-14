@@ -68,7 +68,10 @@ namespace Server
                 {
                     new Thread(() =>
                     {
-                        ServerResponse response = new ServerResponse("HTTP/1.1 200 OK", "Content-Type:application/json", users[request.id]);
+                        ServerResponse response = new ServerResponse();
+                        response.data=users[request.id];
+                        response.response="HTTP/1.1 200 OK";
+                        response.header="Content-Type:application/json";
                         string usersText = JsonSerializer.Serialize(response);
                         byte[] userSend=Encoding.ASCII.GetBytes(usersText);
                         acp.Send(userSend, 0, userSend.Length, SocketFlags.None);

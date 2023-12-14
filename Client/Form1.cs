@@ -29,7 +29,7 @@ namespace Client
             UsersPanel.Text="";
             try
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), Int32.Parse(PortInput.Text));
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IPInput.Text), Int32.Parse(PortInput.Text));
                 sck.Connect(endPoint);
                 MessageBox.Show("Connected");
             }
@@ -49,9 +49,12 @@ namespace Client
                 Array.Resize(ref buffer, bufferSize);
 
                 string data = Encoding.ASCII.GetString(buffer);
+                ServerResponse response=JsonSerializer.Deserialize<ServerResponse>(data);
+                string userData = JsonSerializer.Serialize(response.data);
+                string text = response.response+"\n"+response.header+"\n"+userData;
                 Invoke((MethodInvoker)delegate
                 {
-                    UsersPanel.Text = data;
+                    UsersPanel.Text = text;
                 });
             }
             catch
@@ -95,8 +98,9 @@ namespace Client
                 ServerRequest request=new ServerRequest();
                 request.requestType="POST";
                 request.id=0;
-                Data newUser=new Data(NameBox.Text,Int32.Parse(AgeBox.Text));
-                request.data= newUser;
+                request.data= new Data();
+                request.data.name=NameBox.Text; 
+                request.data.age=Int32.Parse(AgeBox.Text);
                 string dataText=JsonSerializer.Serialize(request);
                 byte[]buffer=Encoding.ASCII.GetBytes(dataText);
                 sck.Send(buffer,0,buffer.Length,SocketFlags.None);

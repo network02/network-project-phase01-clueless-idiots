@@ -10,11 +10,7 @@ namespace Client
     {
         public string name { get; set; }
         public int age { get; set; }
-        public Data(string _name,int _age) 
-        {
-            this.name = _name;
-            this.age = _age;
-        }
+        
 
     }
 }

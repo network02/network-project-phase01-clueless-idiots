@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    [Serializable]
     internal class ServerRequest
     {
         public string requestType { get; set; }
