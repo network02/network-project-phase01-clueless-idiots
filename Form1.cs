@@ -40,7 +40,6 @@ namespace Server
                 try
                 {
                     acp=sck.Accept();
-                    MessageBox.Show("Connection Accepted");
                     sck.Close();
                     Read();
                 }
@@ -64,24 +63,25 @@ namespace Server
 
                 Array.Resize(ref buffer, bufferSize);
                 string data=Encoding.ASCII.GetString(buffer);
-                if (data=="GetRequest")
+                ServerRequest request=JsonSerializer.Deserialize<ServerRequest>(data);
+                if (request.requestType=="GET")
                 {
                     new Thread(() =>
                     {
-                        string usersText=JsonSerializer.Serialize(users);
+                        ServerResponse response = new ServerResponse("HTTP/1.1 200 OK", "Content-Type:application/json", users[request.id]);
+                        string usersText = JsonSerializer.Serialize(response);
                         byte[] userSend=Encoding.ASCII.GetBytes(usersText);
                         acp.Send(userSend, 0, userSend.Length, SocketFlags.None);
                     }).Start();
                 }
                 else
                 {
-                    Data newData = JsonSerializer.Deserialize<Data>(data);
                     Array.Resize(ref users, users.Length+1);
-                    users[users.Length-1] = newData;
+                    users[users.Length-1] = request.data;
                     Invoke((MethodInvoker)delegate
                     {
-                        Names.Items.Add(newData.name);
-                        Ages.Items.Add(newData.age);
+                        Names.Items.Add(request.data.name);
+                        Ages.Items.Add(request.data.age);
                     });
                 }
                 

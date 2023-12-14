@@ -62,7 +62,19 @@ namespace Client
         private Socket Socket_Init() => new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
         private void GetButton_Click(object sender, EventArgs e)
         {
-            byte[] buffer = Encoding.ASCII.GetBytes("GetRequest");
+            ServerRequest request=new ServerRequest();
+            try
+            {
+                request.requestType="GET";
+                request.id=Int32.Parse(UserId.Text);
+                request.data=null;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Entry");
+            }
+            string requestText=JsonSerializer.Serialize(request);
+            byte[] buffer = Encoding.ASCII.GetBytes(requestText);
             sck.Send(buffer,0,buffer.Length,SocketFlags.None);
 
             new Thread(() =>
@@ -80,20 +92,25 @@ namespace Client
 
             try
             {
+                ServerRequest request=new ServerRequest();
+                request.requestType="POST";
+                request.id=0;
                 Data newUser=new Data(NameBox.Text,Int32.Parse(AgeBox.Text));
-                string dataText=JsonSerializer.Serialize(newUser);
+                request.data= newUser;
+                string dataText=JsonSerializer.Serialize(request);
                 byte[]buffer=Encoding.ASCII.GetBytes(dataText);
                 sck.Send(buffer,0,buffer.Length,SocketFlags.None);
             }
-            catch(ArgumentException)
+            catch(SocketException)
             {
-                MessageBox.Show("Invalid entries");
+                MessageBox.Show("Socket not connected");
                 return;
             }
             catch
             {
-                MessageBox.Show("Socket not connected");
+                MessageBox.Show("Invalid entries");
                 return;
+                
             }
         }
     }
