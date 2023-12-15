@@ -1,0 +1,11 @@
+E:\CPP\Server\CheckPorts\bin\Debug\CheckPorts.exe.config
+E:\CPP\Server\CheckPorts\bin\Debug\CheckPorts.exe
+E:\CPP\Server\CheckPorts\bin\Debug\CheckPorts.pdb
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.csproj.AssemblyReference.cache
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.csproj.SuggestedBindingRedirects.cache
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.Form1.resources
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.Properties.Resources.resources
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.csproj.GenerateResource.cache
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.csproj.CoreCompileInputs.cache
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.exe
+E:\CPP\Server\CheckPorts\obj\Debug\CheckPorts.pdb
