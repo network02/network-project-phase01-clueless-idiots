@@ -1,0 +1,11 @@
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\bin\Debug\CheckHost.exe.config
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\bin\Debug\CheckHost.exe
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\bin\Debug\CheckHost.pdb
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.csproj.AssemblyReference.cache
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.csproj.SuggestedBindingRedirects.cache
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.Properties.Resources.resources
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.csproj.GenerateResource.cache
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.csproj.CoreCompileInputs.cache
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.exe
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.pdb
+E:\Github\network-project-phase01-clueless-idiots\CheckHost\obj\Debug\CheckHost.Form1.resources
